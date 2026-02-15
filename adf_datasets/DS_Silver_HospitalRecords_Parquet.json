@@ -1,0 +1,29 @@
+{
+    "name": "DS_Silver_HospitalRecords_Parquet",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "LS_ADLS_ManagedIdentity",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "p_silver_folder": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": {
+                    "value": "@dataset().p_silver_folder",
+                    "type": "Expression"
+                },
+                "fileSystem": "healthcare-project"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": []
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
