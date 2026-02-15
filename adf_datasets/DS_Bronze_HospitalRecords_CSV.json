@@ -1,0 +1,102 @@
+{
+    "name": "DS_Bronze_HospitalRecords_CSV",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "LS_ADLS_ManagedIdentity",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "p_file_name": {
+                "type": "string",
+                "defaultValue": "healthcare_dataset.csv"
+            },
+            "p_folder_path": {
+                "type": "string",
+                "defaultValue": "bronze/hospital_records"
+            }
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": {
+                    "value": "@dataset().p_file_name",
+                    "type": "Expression"
+                },
+                "folderPath": {
+                    "value": "bronze/hospital_records",
+                    "type": "Expression"
+                },
+                "fileSystem": "healthcare-project"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Name",
+                "type": "String"
+            },
+            {
+                "name": "Age",
+                "type": "String"
+            },
+            {
+                "name": "Gender",
+                "type": "String"
+            },
+            {
+                "name": "Blood Type",
+                "type": "String"
+            },
+            {
+                "name": "Medical Condition",
+                "type": "String"
+            },
+            {
+                "name": "Date of Admission",
+                "type": "String"
+            },
+            {
+                "name": "Doctor",
+                "type": "String"
+            },
+            {
+                "name": "Hospital",
+                "type": "String"
+            },
+            {
+                "name": "Insurance Provider",
+                "type": "String"
+            },
+            {
+                "name": "Billing Amount",
+                "type": "String"
+            },
+            {
+                "name": "Room Number",
+                "type": "String"
+            },
+            {
+                "name": "Admission Type",
+                "type": "String"
+            },
+            {
+                "name": "Discharge Date",
+                "type": "String"
+            },
+            {
+                "name": "Medication",
+                "type": "String"
+            },
+            {
+                "name": "Test Results",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
